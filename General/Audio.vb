@@ -539,7 +539,7 @@ Class Audio
         If Not Package.AviSynth.VerifyOK(True) Then Throw New AbortException
 
         Dim aviPath = p.TempDir + Filepath.GetBase(ap.File) + "_cut_mm.avi"
-        Dim args = String.Format("-f lavfi -i color=c=black:s=16x16:d={0} -r {1} -y -hide_banner -c:v copy """ + aviPath + """", (p.CutFrameCount / p.CutFrameRate).ToString("f6", CultureInfo.InvariantCulture), p.CutFrameRate.ToString("f6", CultureInfo.InvariantCulture))
+        Dim args = String.Format("-f lavfi -i color=c=black:s=16x16:d={0}:r={1} -y -hide_banner -c:v copy """ + aviPath + """", (p.CutFrameCount / p.CutFrameRate).ToString("f6", CultureInfo.InvariantCulture), p.CutFrameRate.ToString("f6", CultureInfo.InvariantCulture))
 
         Using proc As New Proc
             proc.Init("Create avi file with ffmpeg " + Package.ffmpeg.Version, "frame=", "size=", "Multiple")
